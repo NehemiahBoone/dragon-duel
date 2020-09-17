@@ -1,6 +1,6 @@
 import { default as Axios } from "axios";
 
 export const api = Axios.create({
-  baseURL: ' https://dragon-duel.herokuapp.com/api',
-  timeout: 3000
+  baseURL: 'https://drag-vs-champ.herokuapp.com/api',
+  timeout: 10000
 })
