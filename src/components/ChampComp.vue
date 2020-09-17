@@ -1,10 +1,10 @@
 <template>
-  <div class="champ">
+  <div class="champ my-2" @click="setActive">
     <div class="card">
       <img class="card-img-top" :src="champData.imgUrl" alt />
       <div class="card-body">
         <h4 class="card-title">{{champData.name}}</h4>
-        <p class="card-text">{{champData.hp}}</p>
+        <p class="card-text">{{champData.class}} with {{champData.hp}} hp</p>
       </div>
     </div>
   </div>
@@ -24,7 +24,11 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    setActive() {
+      this.$store.dispatch("setActiveChamp", this.champData);
+    },
+  },
   components: {},
 };
 </script>

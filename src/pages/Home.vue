@@ -2,6 +2,7 @@
   <div class="home container-fluid">
     <div class="row">
       <div class="col-6">
+        <button v-if="aChamp && aDragon" type="button" class="btn btn-primary">Fight</button>
         <dragon v-for="d in dragons" :key="d.id" :dragonData="d" />
       </div>
       <div class="col-6">
@@ -21,6 +22,7 @@ export default {
   name: "Home",
   mounted() {
     this.$store.dispatch("getAllDragons");
+    this.$store.dispatch("getAllChamps");
   },
   components: {
     Dragon,
@@ -30,7 +32,15 @@ export default {
     dragons() {
       return this.$store.state.dragons;
     },
-    champs() {},
+    champs() {
+      return this.$store.state.champs;
+    },
+    aChamp() {
+      return this.$store.state.activeChamp;
+    },
+    aDragon() {
+      return this.$store.state.activeDragon;
+    },
   },
 };
 </script>
