@@ -2,7 +2,9 @@
   <div class="home container-fluid">
     <div class="row">
       <div class="col-6">
-        <button v-if="aChamp && aDragon" type="button" class="btn btn-primary">Fight</button>
+        <router-link :to="{name: 'Fight'}">
+          <button v-if="aChamp && aDragon" type="button" class="btn btn-primary">Fight</button>
+        </router-link>
         <dragon v-for="d in dragons" :key="d.id" :dragonData="d" />
       </div>
       <div class="col-6">

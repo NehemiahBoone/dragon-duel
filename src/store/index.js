@@ -10,6 +10,7 @@ export default new Vuex.Store({
     champs: [],
     activeChamp: null,
     activeDragon: null,
+    game: {}
   },
   mutations: {
     setDragons(state, dragons) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     setActiveChamp(state, champ) {
       state.activeChamp = champ
+    },
+    setGame(state, game) {
+      state.game = game
     }
   },
   actions: {
@@ -40,6 +44,15 @@ export default new Vuex.Store({
     setActiveChamp({ commit }, champ) {
       commit('setActiveChamp', champ)
     },
+    async getGame({ commit }, game) {
+      let res = await api.post("games", game)
+      console.log(res);
+      commit('setGame', res.data)
+    },
+    async attack({ commit }, obj) {
+      let res = await api.put(`games/${obj.id}`, { attack: obj.attack })
+      commit("setGame", res.data)
+    }
   },
   modules: {
   }
